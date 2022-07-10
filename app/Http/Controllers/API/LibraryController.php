@@ -16,14 +16,21 @@ class LibraryController extends Controller
      */
     public function store(Request $request)
     {
-        Library::create([
-            'account_no' => $request->account_no,
-            'mat_no' => $request->mat_no,
-            'return_date'=>$request->return_date
-        ]);
-        return response()->json([
-            'message' => 'Update Successful',
-        ]);
+        try {
+            Library::create([
+                'account_no' => $request->account_no,
+                'mat_no' => $request->mat_no,
+                'return_date'=>$request->return_date
+            ]);
+            return response()->json([
+                'message' => 'Update Successful',
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Unable to acquire student data',
+                'error' => $th,
+            ]);
+        }
 
     }
 
@@ -34,7 +41,16 @@ class LibraryController extends Controller
      */
     public function show(Request $request)
     {
-        return response()->json(Library::all()->where('mat_no', $request->mat_no));
+        try {
+            return response()->json(
+                Library::all()->where('mat_no', $request->mat_no)
+            );
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Unable to acquire student data',
+                'error' => $th,
+            ]);
+        }
     }
 
     /**

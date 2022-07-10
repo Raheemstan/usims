@@ -73,30 +73,43 @@ class StudentController extends Controller
      */
     public function show(Request $request)
     {
-        return response()->json(Student::all()
-        ->where('qr_hash', $request->qr_hash), 200);
+        try {
+            return response()->json(Student::all()
+            ->where('qr_hash', $request->qr_hash), 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Unable to acquire student data',
+                'error' => $th
+            ]);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        Student::where('qr_hash', $request->qr_hash)->update([
-            'surname'=>$request->surname,
-            'firstname'=>$request->firstname,
-            'othername'=>$request->othername,
-            'dob'=>$request->dob,
-            'phone'=>$request->phone,
-            'email'=>$request->email,
-            'course_id'=>$request->course_id,
-            'level_id'=>$request->level_id,
-        ]);
-        return $this->show($request);
+        try {
+            Student::where('qr_hash', $request->qr_hash)->update([
+                'surname'=>$request->surname,
+                'firstname'=>$request->firstname,
+                'othername'=>$request->othername,
+                'dob'=>$request->dob,
+                'phone'=>$request->phone,
+                'email'=>$request->email,
+                'course_id'=>$request->course_id,
+                'level_id'=>$request->level_id,
+            ]);
+            return $this->show($request);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Unable to update student record',
+                'error' => $th,
+            ]);
+        }
     }
 
     /**

@@ -10,6 +10,22 @@ class Lab extends Model
     use HasFactory;
     protected $table = 'labs';
     protected $fillable = [
-
+        'mat_no',
+        'weight',
+        'height',
+        'eye_vision',
+        'blood_press',
+        'hb',
+        'pc',
+        'genotype',
+        'hiv',
+        'wbc',
+        'urine_microscopy',
+        'urinalysis',
+        'stool_microscopy',
+        'kin_snip',
+        'pregnancy',
+        'recomendation',
+        'officer',
     ];
 }

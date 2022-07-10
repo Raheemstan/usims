@@ -28,7 +28,7 @@ return new class extends Migration
             $table->integer('ear_pain');
             $table->integer('ear_discharge');
             $table->integer('breathing_diff');
-            $table->integer('breathless-walk');
+            $table->integer('breathless_walk');
             $table->integer('groin');
             $table->integer('nect');
             $table->integer('tuberculosis');

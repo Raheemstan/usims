@@ -38,8 +38,11 @@ Route::post('/medical-update', [MedicalsController::class, 'update']);
 
 Route::post('/admin-dashboard', [AdminController::class, 'show']);
 
-Route::post('/transaction', [PaymentsController::class, 'store']);
+Route::post('/payment', [PaymentsController::class, 'store']);
 Route::post('/view-transaction', [PaymentsController::class, 'show']);
+
+Route::post('/labs', [MedicalsController::class, 'labstore']);
+Route::post('/labs-update', [MedicalsController::class, 'labupdate']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

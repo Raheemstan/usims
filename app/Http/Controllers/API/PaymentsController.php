@@ -32,6 +32,10 @@ class PaymentsController extends Controller
             'description'=>$request->desc,
             'session_id'=>$request->sess,
         ]);
+        
+        return response()->json([
+            'Message' => 'Update Successful',
+        ]);
     }
 
     /**

@@ -15,7 +15,7 @@ class SessionsController extends Controller
      */
     public function index()
     {
-        return response(Session::all());
+        return response()->json(Session::all());
     }
 
     /**
