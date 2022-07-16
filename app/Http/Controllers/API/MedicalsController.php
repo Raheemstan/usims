@@ -9,16 +9,7 @@ use Illuminate\Http\Request;
 
 class MedicalsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -28,7 +19,7 @@ class MedicalsController extends Controller
     public function store(Request $request)
     {
         try {
-                Medical::create([
+                $data =  Medical::create([
                     'mat_no' => $request->mat_no,
                     'cough' => $request->cough,
                     'chest_pain' => $request->chest_pain,
@@ -54,15 +45,16 @@ class MedicalsController extends Controller
                     'hosp_desc' => $request->hosp_desc,
                     'accident' => $request->accident,
                     'acc_desc' => $request->acc_desc,
-                ]);
+                ])->get()->where('mat_no', $request->mat_no);
                 return response()->json([
-                    'message' => 'update Successful'
+                    'message' => 'update Successful',
+                    'data' => $data
                 ]);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Unable to update student record',
                 'error' => $th,
-            ], 404);
+            ], 406);
         }
     }
 
@@ -79,7 +71,7 @@ class MedicalsController extends Controller
             return response()->json([
                 'message' => 'unable to identify student data',
                 'error' => $th,
-            ]);
+            ], 406);
         }
     }
 
@@ -121,7 +113,7 @@ class MedicalsController extends Controller
                 'acc_desc' => $request->acc_desc,
             ]);
             return response()->json([
-                'message' => 'update Successful'
+                'message' => 'update Successful',
             ]);
     } catch (\Throwable $th) {
         return response()->json([
@@ -132,7 +124,7 @@ class MedicalsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * store the specified resource from storage.
      *
      * @param  Request  $request
      * @return \Illuminate\Http\Response
@@ -140,11 +132,49 @@ class MedicalsController extends Controller
     public function labstore(Request $request)
     {
         try {
-            Lab::create([
+            $data = Lab::create([
                 'mat_no' => $request->mat_no,
                 'weight' => $request->weight,
                 'height' => $request->height,
-                'eye_vision ' => $request->eye_vision,
+                'eye_vision' => $request->eye_vision,
+                'blood_press' => $request->blood_press,
+                'hb' => $request->hb,
+                'pc' => $request->pc,
+                'genotype' => $request->genotype,
+                'hiv' => $request->hiv,
+                'wbc' => $request->wbc,
+                'urine_microscopy' => $request->urine_microscopy,
+                'urinalysis' => $request->urinalysis,
+                'stool_microscopy' => $request->stool_microscopy,
+                'kin_snip' => $request->kin_snip,
+                'pregnancy' => $request->pregnancy,
+                'recomendation' => $request->recomendation,
+                'officer' => $request->officer,
+            ])->get();
+            return response()->json([
+                'message' => 'Student data updated successful',
+                'data' => $data,
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Unable to acquire student data',
+                'error' => $th,
+            ]);
+        }
+    }
+    /**
+     * update the specified resource from storage.
+     *
+     * @param  Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function labupdate(Request $request)
+    {
+        try {
+            Lab::where('mat_no', $request->mat_no)->update([
+                'weight' => $request->weight,
+                'height' => $request->height,
+                'eye_vision' => $request->eye_vision,
                 'blood_press' => $request->blood_press,
                 'hb' => $request->hb,
                 'pc' => $request->pc,
@@ -170,39 +200,17 @@ class MedicalsController extends Controller
         }
     }
     /**
-     * Remove the specified resource from storage.
+     * Display the specified resource.
      *
-     * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function labupdate(Request $request)
+    public function labview(Request $request)
     {
         try {
-            Lab::where('mat_no', $request->mat_no)->update([
-                'mat_no' => $request->mat_no,
-                'weight' => $request->weight,
-                'height' => $request->height,
-                'eye_vision ' => $request->eye_vision,
-                'blood_press' => $request->blood_press,
-                'hb' => $request->hb,
-                'pc' => $request->pc,
-                'genotype' => $request->genotype,
-                'hiv' => $request->hiv,
-                'wbc' => $request->wbc,
-                'urine_microscopy' => $request->urine_microscopy,
-                'urinalysis' => $request->urinalysis,
-                'stool_microscopy' => $request->stool_microscopy,
-                'kin_snip' => $request->kin_snip,
-                'pregnancy' => $request->pregnancy,
-                'recomendation' => $request->recomendation,
-                'officer' => $request->officer,
-            ]);
-            return response()->json([
-                'message' => 'Student data updated successful',
-            ]);
+            return response(Lab::all()->where('mat_no', $request->mat_no));
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'Unable to acquire student data',
+                'message' => 'unable to identify student data',
                 'error' => $th,
             ]);
         }

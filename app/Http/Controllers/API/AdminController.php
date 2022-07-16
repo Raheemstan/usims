@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lab;
 use App\Models\Library;
 use App\Models\Medical;
 use App\Models\Payments;
@@ -40,18 +41,24 @@ class AdminController extends Controller
      */
     public function show(Request $request)
     {
-        $mat_no = $request->mat_no;
-        $library = Library::all()->where('mat_no', $mat_no);
-        $medical = Medical::all()->where('mat_no', $mat_no);
-        $student = Student::all()->where('mat_no', $mat_no);
-        $trans = Payments::all()->where('mat_no', $mat_no);
+        try {
+            $mat_no = $request->mat_no;
+            $library = Library::all()->where('mat_no', $mat_no);
+            $medical = Medical::all()->where('mat_no', $mat_no);
+            $lab = Lab::all()->where('mat_no', $mat_no);
+            $student = Student::all()->where('mat_no', $mat_no);
+            $trans = Payments::all()->where('mat_no', $mat_no);
 
-        return response()->json([
-            'medical'=>$medical,
-            'library'=>$library,
-            'student'=>$student,
-            'transact'=>$trans,
-        ]);
+            return response()->json([
+                'medical'=>$medical,
+                'lab'=>$lab,
+                'library'=>$library,
+                'student'=>$student,
+                'transact'=>$trans,
+            ]);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     /**

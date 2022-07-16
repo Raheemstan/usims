@@ -17,13 +17,14 @@ class LibraryController extends Controller
     public function store(Request $request)
     {
         try {
-            Library::create([
+            $data = Library::create([
                 'account_no' => $request->account_no,
                 'mat_no' => $request->mat_no,
                 'return_date'=>$request->return_date
-            ]);
+            ])->get();
             return response()->json([
                 'message' => 'Update Successful',
+                'data' => $data,
             ]);
         } catch (\Throwable $th) {
             return response()->json([
@@ -62,17 +63,16 @@ class LibraryController extends Controller
     public function update(Request $request)
     {
         try {
-                
-            Library::where('mat_no', $request->mat_no)->where('id', $request->id)
+            Library::where('id', $request->id)
             ->update([
                 'status'=>1,
             ]);
             return response()->json([
-                "message" =>"Update Successful"
+                'message' =>'Update Successful',
             ]);
         } catch (\Throwable $th) {
             return response()->json([
-                'Message'=>'Unable to update record',
+                'message'=>'Unable to update record',
                 'data'=>$th
             ]);
         }

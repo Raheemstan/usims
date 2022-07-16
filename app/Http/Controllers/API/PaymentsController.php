@@ -26,16 +26,24 @@ class PaymentsController extends Controller
      */
     public function store(Request $request)
     {
-        Payments::create([
-            'teller_id'=>$request->teller_id,
-            'mat_no'=>$request->mat_no,
-            'description'=>$request->desc,
-            'session_id'=>$request->sess,
-        ]);
-        
-        return response()->json([
-            'Message' => 'Update Successful',
-        ]);
+        try {
+            $data = Payments::create([
+                'teller_id'=>$request->teller_id,
+                'mat_no'=>$request->mat_no,
+                'description'=>$request->desc,
+                'session_id'=>$request->sess,
+            ])->get();
+            
+            return response()->json([
+                'message' => 'Update Successful',
+                'data' => $data,
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Unable to update student info',
+                'error' => $th,
+            ]);
+        }
     }
 
     /**
