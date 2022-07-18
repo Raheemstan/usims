@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
+use App\Models\Department;
+use App\Models\Level;
+use App\Models\School;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -53,16 +57,15 @@ class StudentController extends Controller
             'dob'=>$request->input('dob'),
             'phone'=>$request->input('phone'),
             'email'=>$request->input('email'),
+            'department_id'=>$request->input('department_id'),
             'school_id'=>$request->input('school_id'),
             'course_id'=>$request->input('course_id'),
             'level_id'=>$request->input('level_id'),
             'qr_hash'=>$qr,
             'passport'=>$imageFile,
-        ]);
-        $student->save();
+        ])->save();
 
-        return response()->json(Student::all()
-        ->where('mat_no', $request->mat_no));
+        return response()->json($student);
     }
 
     /**
@@ -100,6 +103,7 @@ class StudentController extends Controller
                 'dob'=>$request->dob,
                 'phone'=>$request->phone,
                 'email'=>$request->email,
+                'department_id'=>$request->input('department_id'),
                 'course_id'=>$request->course_id,
                 'level_id'=>$request->level_id,
             ]);
@@ -113,13 +117,30 @@ class StudentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Display the name of the different id's.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function others($department, $level, $school, $course)
     {
-        //
+        try {
+            $dept = Department::where('id', $department)->get('department');       
+            $lev = Level::where('id', $level)->get('level');       
+            $sch = School::where('id', $school)->get('school');       
+            $crs = Course::where('id', $level)->get('course');
+    
+            return response()->json([
+                'depart' => $dept,
+                'level' => $lev,
+                'school' => $sch,
+                'course' => $crs,
+            ]); 
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'unable to collect data',
+                'error' => $th,
+            ]);
+        }
     }
 }

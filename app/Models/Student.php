@@ -18,6 +18,7 @@ class Student extends Model
         'dob',
         'phone',
         'email',
+        'department_id',
         'school_id',
         'course_id',
         'level_id',

@@ -45,6 +45,8 @@ Route::post('/labs', [MedicalsController::class, 'labstore']);
 Route::post('/labs-update', [MedicalsController::class, 'labupdate']);
 Route::post('/labs-view', [MedicalsController::class, 'labview']);
 
+Route::post('other-data', [StudentController::class, 'others']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date("dob");
             $table->string("phone")->unique();
             $table->string("email")->unique();
+            $table->foreignId("department_id")->constrained();
             $table->foreignId("school_id")->constrained();
             $table->foreignId("course_id")->constrained();
             $table->foreignId("level_id")->constrained();
