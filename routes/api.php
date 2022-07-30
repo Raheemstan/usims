@@ -6,6 +6,7 @@ use App\Http\Controllers\API\MedicalsController;
 use App\Http\Controllers\api\PaymentsController;
 use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\SessionsController;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::group(['middleware' => ['auth:sanctum']], function ()
+{
 Route::post('/add-student', [StudentController::class, 'store']);
 Route::post('/dashboard', [StudentController::class, 'show']);
 Route::post('/update', [StudentController::class, 'update']);
@@ -45,7 +52,11 @@ Route::post('/labs', [MedicalsController::class, 'labstore']);
 Route::post('/labs-update', [MedicalsController::class, 'labupdate']);
 Route::post('/labs-view', [MedicalsController::class, 'labview']);
 
-Route::post('other-data', [StudentController::class, 'others']);
+Route::post('/other-data', [StudentController::class, 'others']);
+
+Route::post('/logout', [AuthController::class, 'logout']);
+
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
