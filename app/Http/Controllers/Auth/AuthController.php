@@ -14,12 +14,14 @@ class AuthController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'level' => ['required', 'string'],
             'password' => ['required', 'confirmed'],
         ]);
         
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'level' => $request->level,
             'password' => bcrypt($request->password),
         ]);
 
