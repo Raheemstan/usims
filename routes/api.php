@@ -27,30 +27,35 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function ()
 {
-Route::post('/add-student', [StudentController::class, 'store']);
-Route::post('/dashboard', [StudentController::class, 'show']);
-Route::post('/update', [StudentController::class, 'update']);
-Route::post('/archive', [StudentController::class, 'delete']);
-
-Route::post('/new-session', [SessionsController::class, "store"]);
+    Route::group(['middleware' => 'admin'], function(){
+        Route::post('/add-student', [StudentController::class, 'store']);
+        Route::post('/update', [StudentController::class, 'update']);
+        Route::post('/archive', [StudentController::class, 'delete']);
+        
+        Route::post('/new-session', [SessionsController::class, "store"]);
+        
+        Route::post('/admin-dashboard', [AdminController::class, 'show']);
+    });
+    Route::group(['middleware' => 'library'], function(){
+        Route::post('/lib-new', [LibraryController::class, 'store']);
+        Route::post('/lib-hist', [LibraryController::class, 'show']);
+        Route::post('/lib-update', [LibraryController::class, 'update']);
+    });
+    Route::group(['middleware' => 'medical'], function(){
+        Route::post('/medical', [MedicalsController::class, 'store']);
+        Route::post('/medical-record', [MedicalsController::class, 'show']);
+        Route::post('/medical-update', [MedicalsController::class, 'update']);
+        
+        Route::post('/labs', [MedicalsController::class, 'labstore']);
+        Route::post('/labs-update', [MedicalsController::class, 'labupdate']);
+        Route::post('/labs-view', [MedicalsController::class, 'labview']);
+        
+    });
 Route::post('/list-session', [SessionsController::class, "index"]);
-
-Route::post('/lib-new', [LibraryController::class, 'store']);
-Route::post('/lib-hist', [LibraryController::class, 'show']);
-Route::post('/lib-update', [LibraryController::class, 'update']);
-
-Route::post('/medical', [MedicalsController::class, 'store']);
-Route::post('/medical-record', [MedicalsController::class, 'show']);
-Route::post('/medical-update', [MedicalsController::class, 'update']);
-
-Route::post('/admin-dashboard', [AdminController::class, 'show']);
+Route::post('/dashboard', [StudentController::class, 'show']);
 
 Route::post('/payment', [PaymentsController::class, 'store']);
 Route::post('/view-transact', [PaymentsController::class, 'show']);
-
-Route::post('/labs', [MedicalsController::class, 'labstore']);
-Route::post('/labs-update', [MedicalsController::class, 'labupdate']);
-Route::post('/labs-view', [MedicalsController::class, 'labview']);
 
 Route::post('/other-data', [StudentController::class, 'others']);
 
