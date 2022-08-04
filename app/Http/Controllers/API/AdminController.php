@@ -37,7 +37,7 @@ class AdminController extends Controller
                 'transact'=>$trans,
             ]);
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
     }
 

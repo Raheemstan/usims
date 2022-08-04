@@ -1,0 +1,1534 @@
+{
+	"info": {
+		"_postman_id": "1f8e3232-f338-4f67-bc1f-ea2313788699",
+		"name": "api",
+		"description": "** API documentation for the Unified Student Identity Management System USIMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "student",
+			"item": [
+				{
+					"name": "add-student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "surname",
+									"value": "Raheem",
+									"type": "default"
+								},
+								{
+									"key": "firstname",
+									"value": "Michael",
+									"type": "default"
+								},
+								{
+									"key": "dob",
+									"value": "2019-07-14",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "mail@admin.com",
+									"type": "default"
+								},
+								{
+									"key": "mat_no",
+									"value": "2019/129668CS",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "09071140264",
+									"type": "default"
+								},
+								{
+									"key": "school_id",
+									"value": "2",
+									"type": "default"
+								},
+								{
+									"key": "course_id",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "level_id",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "passport",
+									"type": "file",
+									"src": "/C:/Users/Phoenix/OneDrive/Pictures/image.jpg"
+								},
+								{
+									"key": "department_id",
+									"value": "1",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/add-student",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"add-student"
+							]
+						},
+						"description": "## Registration of new students\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "update-student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "surname",
+									"value": "Raheem",
+									"type": "default"
+								},
+								{
+									"key": "firstname",
+									"value": "Michael",
+									"type": "default"
+								},
+								{
+									"key": "dob",
+									"value": "2019-07-14",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "mail@admin.com",
+									"type": "default"
+								},
+								{
+									"key": "mat_no",
+									"value": "2019/129668CS",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "09071140264",
+									"type": "default"
+								},
+								{
+									"key": "school_id",
+									"value": "2",
+									"type": "default"
+								},
+								{
+									"key": "course_id",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "level_id",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "qr_hash",
+									"value": "$2y$10$dEBA6D6JzJfavB/Pit.Vo.kZXrjplG5HpObobuIwMwDMsWoECZBzC",
+									"type": "default"
+								},
+								{
+									"key": "department_id",
+									"value": "1",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/update",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"update"
+							]
+						},
+						"description": "## Registration of new students\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/dashboard?qr_hash=$2y$10$BKo50l7MC3731XmanFNHeutxSNHUOZ0tarHM0zvr94KYKOZ/yPaV2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"dashboard"
+							],
+							"query": [
+								{
+									"key": "qr_hash",
+									"value": "$2y$10$BKo50l7MC3731XmanFNHeutxSNHUOZ0tarHM0zvr94KYKOZ/yPaV2"
+								}
+							]
+						},
+						"description": "## load student data"
+					},
+					"response": []
+				},
+				{
+					"name": "admin-dashboard",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/admin-dashboard?mat_no=2019/129668CS",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin-dashboard"
+							],
+							"query": [
+								{
+									"key": "mat_no",
+									"value": "2019/129668CS"
+								}
+							]
+						},
+						"description": "## Collect all student data across all tables for admin\n*** Library\n*** Medical\n*** Payments\n*** Student Data"
+					},
+					"response": []
+				},
+				{
+					"name": "other-data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dept",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "course",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "level",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "school",
+									"value": "1",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/other-data?dept=1&course=1&level=1&school=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"other-data"
+							],
+							"query": [
+								{
+									"key": "dept",
+									"value": "1"
+								},
+								{
+									"key": "course",
+									"value": "1"
+								},
+								{
+									"key": "level",
+									"value": "1"
+								},
+								{
+									"key": "school",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "2019/129668CS",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "mail@user.com",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/student",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/student-reg",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"student-reg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "session",
+			"item": [
+				{
+					"name": "new-session",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "session",
+									"value": "2019/2020",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/new-session",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"new-session"
+							]
+						},
+						"description": "## Create new session"
+					},
+					"response": []
+				},
+				{
+					"name": "list-session",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/list-session",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"list-session"
+							]
+						},
+						"description": "## View all registered sessions"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "library",
+			"item": [
+				{
+					"name": "lib-new",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "account_no",
+									"value": "432562",
+									"type": "default"
+								},
+								{
+									"key": "mat_no",
+									"value": "2019/129668CS",
+									"type": "default"
+								},
+								{
+									"key": "return_date",
+									"value": "2019-07-16",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/lib-new",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"lib-new"
+							]
+						},
+						"description": "## Borrow books from the library"
+					},
+					"response": []
+				},
+				{
+					"name": "lib-update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/lib-update?id=3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"lib-update"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						},
+						"description": "## Borrow books from the library"
+					},
+					"response": []
+				},
+				{
+					"name": "lib-hist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/lib-hist?mat_no=2019/129668CS",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"lib-hist"
+							],
+							"query": [
+								{
+									"key": "mat_no",
+									"value": "2019/129668CS"
+								}
+							]
+						},
+						"description": "## Obtain records of all borrowings by student"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "medical",
+			"item": [
+				{
+					"name": "medical",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mat_no",
+									"value": "2019/139688CS",
+									"type": "default"
+								},
+								{
+									"key": "cough",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "chestpain",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "bloody_urine",
+									"value": "0",
+									"description": "\n",
+									"type": "default"
+								},
+								{
+									"key": "excess_urine",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "black_stool",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "epilepsy",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "eye_pain",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "eye_discharge",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "ear_pain",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "ear_discharge",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "breathing_diff",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "breathless_walk",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "groin",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "nect",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "tuberculosis",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "diabetes",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "mental",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "hypertension",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "hospital",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "hosp_desc",
+									"value": "no record",
+									"type": "default"
+								},
+								{
+									"key": "accident",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "acc_desc",
+									"value": "no record",
+									"type": "default"
+								},
+								{
+									"key": "chest_pain",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "mucus_stool",
+									"value": "0",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/medical",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"medical"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "medical-update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cough",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "chestpain",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "bloody_urine",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "excess_urine",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "black_stool",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "epilepsy",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "eye_pain",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "eye_discharge",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "ear_pain",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "ear_discharge",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "breathing_diff",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "breathless_walk",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "groin",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "nect",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "tuberculosis",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "diabetes",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "mental",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "hypertension",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "hospital",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "hosp_desc",
+									"value": "no record",
+									"type": "default"
+								},
+								{
+									"key": "accident",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "acc_desc",
+									"value": "no record",
+									"type": "default"
+								},
+								{
+									"key": "chest_pain",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "mucus_stool",
+									"value": "0",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/medical-update",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"medical-update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "medical-record",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/medical-record?mat_no=2019/129668CS",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"medical-record"
+							],
+							"query": [
+								{
+									"key": "mat_no",
+									"value": "2019/129668CS"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "labs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mat_no",
+									"value": "2019/129668CS",
+									"type": "default"
+								},
+								{
+									"key": "weight",
+									"value": "65",
+									"type": "default"
+								},
+								{
+									"key": "height",
+									"value": "1.74",
+									"type": "default"
+								},
+								{
+									"key": "eye_vision",
+									"value": "good",
+									"type": "default"
+								},
+								{
+									"key": "blood_press",
+									"value": "37",
+									"type": "default"
+								},
+								{
+									"key": "hb",
+									"value": "100",
+									"type": "default"
+								},
+								{
+									"key": "pc",
+									"value": "72",
+									"type": "default"
+								},
+								{
+									"key": "genotype",
+									"value": "AS",
+									"type": "default"
+								},
+								{
+									"key": "hiv",
+									"value": "-ve",
+									"type": "default"
+								},
+								{
+									"key": "wbc",
+									"value": "20~ml",
+									"type": "default"
+								},
+								{
+									"key": "urine_microscopy",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "urinalysis",
+									"value": "clear",
+									"type": "default"
+								},
+								{
+									"key": "stool_microscopy",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "kin_snip",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "pregnancy",
+									"value": "-ve",
+									"type": "default"
+								},
+								{
+									"key": "recomendation",
+									"value": "none",
+									"type": "default"
+								},
+								{
+									"key": "officer",
+									"value": "Raheemstan",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/labs",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"labs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "labsupdate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "weight",
+									"value": "65",
+									"type": "default"
+								},
+								{
+									"key": "height",
+									"value": "1.74",
+									"type": "default"
+								},
+								{
+									"key": "eye_vision",
+									"value": "good",
+									"type": "default"
+								},
+								{
+									"key": "blood_press",
+									"value": "37",
+									"type": "default"
+								},
+								{
+									"key": "hb",
+									"value": "100",
+									"type": "default"
+								},
+								{
+									"key": "pc",
+									"value": "72",
+									"type": "default"
+								},
+								{
+									"key": "genotype",
+									"value": "AS",
+									"type": "default"
+								},
+								{
+									"key": "hiv",
+									"value": "-ve",
+									"type": "default"
+								},
+								{
+									"key": "wbc",
+									"value": "20~ml",
+									"type": "default"
+								},
+								{
+									"key": "urine_microscopy",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "urinalysis",
+									"value": "clear",
+									"type": "default"
+								},
+								{
+									"key": "stool_microscopy",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "kin_snip",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "pregnancy",
+									"value": "-ve",
+									"type": "default"
+								},
+								{
+									"key": "recomendation",
+									"value": "none",
+									"type": "default"
+								},
+								{
+									"key": "officer",
+									"value": "Raheemstan",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/labs-update",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"labs-update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "labs-view",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/labs-view?mat_no=2019/129668CS",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"labs-view"
+							],
+							"query": [
+								{
+									"key": "mat_no",
+									"value": "2019/129668CS"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payments",
+			"item": [
+				{
+					"name": "payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "teller_id",
+									"value": "3431242121",
+									"description": "RRR or teller",
+									"type": "default"
+								},
+								{
+									"key": "mat_no",
+									"value": "2019/129668CS",
+									"type": "default"
+								},
+								{
+									"key": "desc",
+									"value": "Medical",
+									"description": "Medical or Library",
+									"type": "default"
+								},
+								{
+									"key": "sess",
+									"value": "4",
+									"description": "id for the session",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/payment",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view-transact",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "teller_id",
+									"value": "3431242121",
+									"description": "RRR or teller",
+									"type": "default"
+								},
+								{
+									"key": "mat_no",
+									"value": "2019/129668CS",
+									"type": "default"
+								},
+								{
+									"key": "desc",
+									"value": "Medical",
+									"description": "Medical or Library",
+									"type": "default"
+								},
+								{
+									"key": "sess",
+									"value": "4",
+									"description": "id for the session",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/view-transact?mat_no=2019/129668CS",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"view-transact"
+							],
+							"query": [
+								{
+									"key": "mat_no",
+									"value": "2019/129668CS"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "# Payment\n### Folder contains all payment API"
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Michael Raheem",
+									"description": "Staff name",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "admin@mail.com",
+									"description": "staff email",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "admin@mail.com",
+									"type": "default"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "admin@mail.com",
+									"type": "default"
+								},
+								{
+									"key": "level",
+									"value": "1",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@mail.com",
+									"description": "email",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "admin@mail.com",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "student-login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "mail@user.com",
+									"description": "email",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "2019/129668CS",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@mail.com",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/logout",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "4|eZyZNfBRNmh5riSGOpWtayD7NmB1mYuwTUgE2Thq",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

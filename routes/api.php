@@ -51,17 +51,17 @@ Route::group(['middleware' => ['auth:sanctum']], function ()
         Route::post('/labs-view', [MedicalsController::class, 'labview']);
         
     });
-Route::post('/list-session', [SessionsController::class, "index"]);
-Route::post('/dashboard', [StudentController::class, 'show']);
-
-Route::post('/payment', [PaymentsController::class, 'store']);
-Route::post('/view-transact', [PaymentsController::class, 'show']);
-
-Route::post('/other-data', [StudentController::class, 'others']);
-
-Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/student', [AdminController::class, 'show']);
+    
+    Route::post('/list-session', [SessionsController::class, "index"]);
+    Route::post('/dashboard', [StudentController::class, 'show']);
+    Route::post('/payment', [PaymentsController::class, 'store']);
+    Route::post('/view-transact', [PaymentsController::class, 'show']);
+    Route::post('/other-data', [StudentController::class, 'others']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 
 });
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

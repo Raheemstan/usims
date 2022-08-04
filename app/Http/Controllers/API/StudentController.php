@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Department;
 use App\Models\Level;
+use App\Models\Login;
 use App\Models\School;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -63,6 +64,10 @@ class StudentController extends Controller
             'level_id'=>$request->input('level_id'),
             'qr_hash'=>$qr,
             'passport'=>$imageFile,
+        ])->save();
+        Login::create([
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('mat_no')),
         ])->save();
 
         return response()->json($student);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Login;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -40,7 +41,14 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
         
-        $user = User::where('email', $request->email)->first();
+        $staff = User::where('email', $request->email)->first();
+        $stud = Login::where('email', $request->email)->first();
+        
+        if($staff){
+            $user = $staff;
+        }else{
+            $user = $stud;
+        }
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([
                 'message' => 'Invalid logins'
@@ -66,4 +74,5 @@ class AuthController extends Controller
         ]);
 
     }
+
 }
