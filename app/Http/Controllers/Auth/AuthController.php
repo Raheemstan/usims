@@ -41,13 +41,11 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
         
-        $staff = User::where('email', $request->email)->first();
-        $stud = Login::where('email', $request->email)->first();
-        
-        if($staff){
-            $user = $staff;
-        }else{
-            $user = $stud;
+        try {
+            //code...
+            $user = User::where('email', $request->email)->first();
+        } catch (\Throwable $th) {
+            $user = Login::where('email', $request->email)->first();
         }
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([

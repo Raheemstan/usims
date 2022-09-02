@@ -64,7 +64,8 @@ class StudentController extends Controller
             'level_id'=>$request->input('level_id'),
             'qr_hash'=>$qr,
             'passport'=>$imageFile,
-        ])->save();
+        ]);
+        $student->save();
         Login::create([
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('mat_no')),

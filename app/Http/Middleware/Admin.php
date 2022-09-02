@@ -16,12 +16,12 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->level==3) {
+        if (auth()->user()->level === 3) {
             return $next($request);
         }else{
             return response([
-                'message' => "Unauthorized",
-            ], 401);
+                'message' => "Only admin staff authorized",
+            ]);
         }
 
     }

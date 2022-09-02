@@ -20,8 +20,8 @@ class Library
             return $next($request);
         }else{
             return response([
-                'message' => "Unauthorized",
-            ], 401);
+                'message' => "Only Library Staff authorized",
+            ]);
         }
     }
 }

@@ -20,8 +20,8 @@ class Medical
             return $next($request);
         }else{
             return response([
-                'message' => "Unauthorized",
-            ], 401);
+                'message' => "Only medical staff authorized",
+            ]);
         }
     }
 }
